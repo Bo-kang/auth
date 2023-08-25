@@ -5,8 +5,8 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 import java.time.Instant
 
-@Table("user")
-data class User(
+@Table("platform_user")
+data class PlatformUserEntity(
     @Id
     val id : Long,
     val username : String,

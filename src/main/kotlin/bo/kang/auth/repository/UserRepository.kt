@@ -1,9 +1,9 @@
 package bo.kang.auth.repository
 
-import bo.kang.auth.entity.User
+import bo.kang.auth.entity.PlatformUserEntity
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
-interface UserRepository : CoroutineCrudRepository<User, Long> {
-    suspend fun findByEmail(email : String) : User?
+interface UserRepository : CoroutineCrudRepository<PlatformUserEntity, Long> {
+    suspend fun findByEmail(email : String) : PlatformUserEntity?
 
 }

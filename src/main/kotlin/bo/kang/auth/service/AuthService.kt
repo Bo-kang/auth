@@ -1,6 +1,7 @@
 package bo.kang.auth.service
 
 import bo.kang.auth.data.Exceptions
+import bo.kang.auth.dto.Requests
 import bo.kang.auth.dto.Responses
 import bo.kang.auth.repository.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -29,6 +30,13 @@ class AuthService(
         }.getOrThrow().run {
             Responses.User.from(this)
         }
+    }
+    suspend fun login(req: Requests.Login): Responses.User {
+        return login(req.email, req.password)
+    }
+
+    suspend fun register(req : Requests.Register){
+
     }
 
 

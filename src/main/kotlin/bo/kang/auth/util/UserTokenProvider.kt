@@ -5,17 +5,23 @@ import bo.kang.auth.dto.VerifiedUser
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.security.Keys
 import io.klogging.logger
+import jakarta.annotation.PostConstruct
 import org.springframework.stereotype.Component
+import javax.crypto.SecretKey
+import kotlin.io.encoding.Base64
 
 @Component
-class TokenProvider {
+class UserTokenProvider(
+
+) {
 
     companion object {
-        const val keySource = "BOAUTHKEY" //@Todo Move to property
+        const val keySource = "qBNGooBpSENJbDFPzYLvTbAaZoGVxscO" //@Todo Move to property
         val logger = logger("token-provider")
     }
 
-    private val tokenKey = Keys.hmacShaKeyFor(keySource.toByteArray())
+    val tokenKey: SecretKey = Keys.hmacShaKeyFor(keySource.toByteArray())
+
 
     fun generateUserToken(user: Responses.User): String {
         return Utils.JwtUtils.generateJwt(

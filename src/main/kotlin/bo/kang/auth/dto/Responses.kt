@@ -11,12 +11,12 @@ class Responses {
         val status: UserStatus
     ) {
         companion object {
-            fun from(user: bo.kang.auth.entity.User): User {
+            fun from(platformUserEntity: bo.kang.auth.entity.PlatformUserEntity): User {
                 return User(
-                    id = user.id,
-                    username = user.username,
-                    email = user.email,
-                    status = user.status
+                    id = platformUserEntity.id,
+                    username = platformUserEntity.username,
+                    email = platformUserEntity.email,
+                    status = platformUserEntity.status
                 )
             }
         }

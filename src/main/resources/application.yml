@@ -1,0 +1,15 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/bo
+    username: postgres
+    password: postgres
+    pool:
+      validation-query: SELECT 1
+      max-life-time: 60m
+      max-size: 10
+      max-create-connection-time: 3s
+
