@@ -12,7 +12,7 @@ class AuthService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) {
-    suspend fun login(email: String, password: String? = null) : Responses.User {
+    suspend fun login(email: String, password: String) : Responses.User {
 
         return runCatching {
             userRepository.findByEmail(email)?.also {
@@ -30,9 +30,6 @@ class AuthService(
         }.getOrThrow().run {
             Responses.User.from(this)
         }
-    }
-    suspend fun login(req: Requests.Login): Responses.User {
-        return login(req.email, req.password)
     }
 
     suspend fun register(req : Requests.Register){

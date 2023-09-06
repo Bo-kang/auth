@@ -21,12 +21,11 @@ class AuthController(
         exchange: ServerWebExchange,
         @RequestBody req: Requests.Login
     ) {
-        authService.login(req)
+        authService.login(req.email, req.password)
             .also {
                 exchange.response.headers.set(
                     HttpHeaders.SET_COOKIE,
                     Utils.CookieUtils.generateCookie(BO_USER_ID, userTokenProvider.generateUserToken(it)).toString()
-
                 )
             }
     }
